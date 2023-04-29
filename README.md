@@ -12,4 +12,4 @@ https://huggingface.co/eenzeenee/t5-small-korean-summarization model 변경후 �
 
 # 현재 화풍 종류
 
-Realism,Sketch,Oriental ink,Pop art,Cartoon,Painterly art,Black and white,Carricature,Gray-scale
+Realism, Sketch, Oriental ink, Pop art, Cartoon, Painterly art, Black and white, Carricature, Gray-scale
