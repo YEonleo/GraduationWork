@@ -9,3 +9,7 @@ Reindex -> df index 순서 Passage, Summary, Style 순으로 통일. <br>
 
 
 https://huggingface.co/eenzeenee/t5-small-korean-summarization model 변경후 학습예정 -> 0416
+
+# 현재 화풍 종류
+
+Realism,Sketch,Oriental ink,Pop art,Cartoon,Painterly art,Black and white,Carricature,Gray-scale
