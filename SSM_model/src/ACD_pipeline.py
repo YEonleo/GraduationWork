@@ -38,11 +38,6 @@ def train_sentiment_analysis(args):
     random_seed_int = 5    
     set_seed(random_seed_int, device) 
     
-    style_correct = 0 
-    rouge = Rouge()
-    rouge1_f = 0
-    rouge2_f = 0
-    rougel_f = 0
 
     #데이터 로더 부분 Train 데이터셋 과 validation 데이터셋을 불러와 Dataloader에 넣고 배치 형태로 생성
     print('tokenizing train data')
@@ -148,6 +143,12 @@ def train_sentiment_analysis(args):
 
             pred_list = []
             label_list = []
+            
+            style_correct = 0 
+            rouge = Rouge()
+            rouge1_f = 0
+            rouge2_f = 0
+            rougel_f = 0
             
             for batch in summary_dev_dataloader:
                 batch = tuple(t.to(device) for t in batch)
