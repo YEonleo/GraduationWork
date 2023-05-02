@@ -17,9 +17,10 @@ from ACD_dataset import label_id_to_name, get_dataset
 from datetime import datetime
 
 from ACD_models import ACD_model
+from rouge import Rouge
 
 
-#wandb.init(project="grad", entity="leoyeon")
+wandb.init(project="StoryPot", entity="leoyeon")
 
 # GPU 사용 가능 여부 확인
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -42,10 +43,12 @@ def train_sentiment_analysis(args):
     tokenizer = AutoTokenizer.from_pretrained('eenzeenee/t5-small-korean-summarization')
 
     train_data = get_dataset("data.csv")
-    dev_data = get_dataset("validation.csv")
+    dev_data = get_dataset("Inference.csv")
     
-    print('Summary_train_count: ', len(entity_property_train_data))
-    print('Summary_dev_count: ', len(entity_property_dev_data))
+    print('Summary_train_count: ', len(train_data))
+    print('Summary_dev_count: ', len(dev_data))
+    
+    a = len(train_data)
     
     summary_train_dataloader = DataLoader(train_data, shuffle=True,
                                 batch_size=args.batch_size,
@@ -104,7 +107,7 @@ def train_sentiment_analysis(args):
 
         ssm_model.train()
 
-        # entity_property train
+        # ssm_model_train
         ssm_total_loss = 0
 
         for step, batch in enumerate(tqdm(summary_train_dataloader)):
@@ -139,6 +142,7 @@ def train_sentiment_analysis(args):
 
             pred_list = []
             label_list = []
+            
             for batch in summary_dev_dataloader:
                 batch = tuple(t.to(device) for t in batch)
                 e_input_ids, e_input_mask, d_input_ids,d_attention_mask = batch
@@ -154,18 +158,56 @@ def train_sentiment_analysis(args):
             correct = 0 
             pred_num = 0  
             
-
+            #단순
             for true,pred in zip(label_list,pred_list):
-                if true == pred:
-                    correct = correct+1
-            #wandb.log({"correct": correct})
-            #wandb.log({"acc": correct/len(entity_property_dev_data)})
-                        
-            print(correct,data_num,pred_num)
+                test1 = true
+                test2 = pred
+
+                style1 = test1.split(',',maxsplit=1)
+                style2 = test2.split(',',maxsplit=1)
+                docs1 = style1[1]
+                docs2 = style2[1]
+
+                # if style1[0] == 'black and white':
+                #     if style2[0] == 'sketch':
+                #         style_correct = style_correct+1
+                # elif style1[0] == 'sketch':
+                #     if style2[0] == 'black and white':
+                #         style_correct = style_correct+1
+                # elif style1[0] == 'fantasy vivid colors':
+                #     if style2[0] == 'Oil Paintings':
+                #         style_correct = style_correct+1
+                # elif style1[0] == 'Oil Paintings':
+                #     if style2[0] == 'fantasy vivid colors':
+                #         style_correct = style_correct+1
+                # elif style1[0] == 'vivid color':
+                #     if style2[0] == 'Oil Paintings':
+                #         style_correct = style_correct+1
+                # elif style1[0] == 'Oil Paintings':
+                #     if style2[0] == 'vivid color':
+                #         style_correct = style_correct+1
+                # elif style1[0] == 'Oil Paintings':
+                #     if style2[0] == 'oriental painting':
+                #         style_correct = style_correct+1        
+                # elif style1[0] == 'oriental painting':
+                #     if style2[0] == 'Oil Paintings':
+                #         style_correct = style_correct+1
+
+                # if style1[0] == style2[0]:
+                #     style_correct = style_correct+1     
+                                    
+
+                scores = rouge.get_scores(docs1, docs2, avg=True)
+                rouge1_f = rouge1_f + scores['rouge-1']['f']
+                rouge2_f = rouge2_f + scores['rouge-2']['f']
+                rougel_f = rougel_f + scores['rouge-l']['f']
+    
+    #wandb.log({"style_Match": style_correct})
+    #wandb.log({"style_accuracy": style_correct/a})
+    wandb.log({"rouge1_f1score": rouge1_f/a})
+    wandb.log({"rouge2_f1score": rouge2_f/a})
+    wandb.log({"rougel_f1score": rougel_f/a})
             
-
-                
-
     print("training is done")
 
     
