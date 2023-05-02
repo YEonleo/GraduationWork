@@ -21,10 +21,10 @@ https://huggingface.co/eenzeenee/t5-small-korean-summarization 기반으로 학�
 Realism, Sketch, Oriental ink, Pop art, Cartoon, Painterly art, Black and white, Carricature, Gray-scale중
 
                     
-                    Realism, Painterly art<br>
-                    Oriental ink, Gray-scale<br>
-                    Pop art, Cartoon<br>
-                    Sketch, Carricature<br>
-                    Black and white, Gray-scale<br>
+                    Realism, Painterly art
+                    Oriental ink, Gray-scale
+                    Pop art, Cartoon
+                    Sketch, Carricature
+                    Black and white, Gray-scale
                     
                     기준으로 설정
