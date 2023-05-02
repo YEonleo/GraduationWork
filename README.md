@@ -28,3 +28,7 @@ Realism, Sketch, Oriental ink, Pop art, Cartoon, Painterly art, Black and white,
                     Black and white, Gray-scale
                     
                     기준으로 설정
+# Inference 분리
+
+ACD에 Inference 분리해서 학습시간 따로 
+
