@@ -159,67 +159,63 @@ def train_sentiment_analysis(args):
                 #print("정답",tokenizer.batch_decode(d_input_ids, skip_special_tokens=True)) 
                 pred_list.extend(tokenizer.batch_decode(predictions, skip_special_tokens=True))
                 label_list.extend(tokenizer.batch_decode(d_input_ids, skip_special_tokens=True))
-                
-            data_num = 0
-            correct = 0 
-            pred_num = 0  
             
-            #단순
-            for true,pred in zip(label_list,pred_list):
-                test1 = true
-                test2 = pred
+                #단순
+                for true,pred in zip(label_list,pred_list):
+                    test1 = true
+                    test2 = pred
 
-                style1 = test1.split(',',maxsplit=1)
-                style2 = test2.split(',',maxsplit=1)
-                docs1 = style1[1]
-                docs2 = style2[1]
+                    style1 = test1.split(',',maxsplit=1)
+                    style2 = test2.split(',',maxsplit=1)
+                    docs1 = style1[1]
+                    docs2 = style2[1]
 
-                #
-                #Realism, Painterly art
-                #Oriental ink, Gray-scale
-                #Pop art, Cartoon
-                #Sketch, Carricature
-                #Black and white, Gray-scale
-                
-                if style1[0] == 'Black and white':
-                    if style2[0] == 'Gray-scale':
-                        style_correct = style_correct+1
-                elif style1[0] == 'Gray-scale':
-                    if style2[0] == 'Black and white':
-                        style_correct = style_correct+1
-                elif style1[0] == 'Realism':
-                    if style2[0] == 'Painterly art':
-                        style_correct = style_correct+1
-                elif style1[0] == 'Painterly art':
-                    if style2[0] == 'Realism':
-                        style_correct = style_correct+1
-                elif style1[0] == 'Oriental ink':
-                    if style2[0] == 'Gray-scale':
-                        style_correct = style_correct+1
-                elif style1[0] == 'Gray-scale':
-                    if style2[0] == 'Oriental ink':
-                        style_correct = style_correct+1
-                elif style1[0] == 'Pop art':
-                    if style2[0] == 'Cartoon':
-                        style_correct = style_correct+1        
-                elif style1[0] == 'Cartoon':
-                    if style2[0] == 'Pop art':
-                        style_correct = style_correct+1
-                elif style1[0] == 'Sketch':
-                    if style2[0] == 'Carricature':
-                        style_correct = style_correct+1        
-                elif style1[0] == 'Carricature':
-                    if style2[0] == 'Sketch':
-                        style_correct = style_correct+1
+                    #
+                    #Realism, Painterly art
+                    #Oriental ink, Gray-scale
+                    #Pop art, Cartoon
+                    #Sketch, Carricature
+                    #Black and white, Gray-scale
+                    
+                    if style1[0] == 'Black and white':
+                        if style2[0] == 'Gray-scale':
+                            style_correct = style_correct+1
+                    elif style1[0] == 'Gray-scale':
+                        if style2[0] == 'Black and white':
+                            style_correct = style_correct+1
+                    elif style1[0] == 'Realism':
+                        if style2[0] == 'Painterly art':
+                            style_correct = style_correct+1
+                    elif style1[0] == 'Painterly art':
+                        if style2[0] == 'Realism':
+                            style_correct = style_correct+1
+                    elif style1[0] == 'Oriental ink':
+                        if style2[0] == 'Gray-scale':
+                            style_correct = style_correct+1
+                    elif style1[0] == 'Gray-scale':
+                        if style2[0] == 'Oriental ink':
+                            style_correct = style_correct+1
+                    elif style1[0] == 'Pop art':
+                        if style2[0] == 'Cartoon':
+                            style_correct = style_correct+1        
+                    elif style1[0] == 'Cartoon':
+                        if style2[0] == 'Pop art':
+                            style_correct = style_correct+1
+                    elif style1[0] == 'Sketch':
+                        if style2[0] == 'Carricature':
+                            style_correct = style_correct+1        
+                    elif style1[0] == 'Carricature':
+                        if style2[0] == 'Sketch':
+                            style_correct = style_correct+1
 
-                if style1[0] == style2[0]:
-                    style_correct = style_correct+1     
-                                    
+                    if style1[0] == style2[0]:
+                        style_correct = style_correct+1     
+                                        
 
-                scores = rouge.get_scores(docs1, docs2, avg=True)
-                rouge1_f = rouge1_f + scores['rouge-1']['f']
-                rouge2_f = rouge2_f + scores['rouge-2']['f']
-                rougel_f = rougel_f + scores['rouge-l']['f']
+                    scores = rouge.get_scores(docs1, docs2, avg=True)
+                    rouge1_f = rouge1_f + scores['rouge-1']['f']
+                    rouge2_f = rouge2_f + scores['rouge-2']['f']
+                    rougel_f = rougel_f + scores['rouge-l']['f']
 
             print({"rouge1_f1score": rouge1_f/a})
             print({"rouge2_f1score": rouge2_f/a})
