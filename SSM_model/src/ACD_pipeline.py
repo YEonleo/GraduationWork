@@ -20,7 +20,7 @@ from ACD_models import ACD_model
 from rouge import Rouge
 
 
-wandb.init(project="StoryPot", entity="leoyeon")
+wandb.init(project="grad", entity="leoyeon")
 
 # GPU 사용 가능 여부 확인
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -37,6 +37,12 @@ def train_sentiment_analysis(args):
     #랜덤시드 5로 고정
     random_seed_int = 5    
     set_seed(random_seed_int, device) 
+    
+    style_correct = 0 
+    rouge = Rouge()
+    rouge1_f = 0
+    rouge2_f = 0
+    rougel_f = 0
 
     #데이터 로더 부분 Train 데이터셋 과 validation 데이터셋을 불러와 Dataloader에 넣고 배치 형태로 생성
     print('tokenizing train data')
@@ -168,47 +174,65 @@ def train_sentiment_analysis(args):
                 docs1 = style1[1]
                 docs2 = style2[1]
 
-                # if style1[0] == 'black and white':
-                #     if style2[0] == 'sketch':
-                #         style_correct = style_correct+1
-                # elif style1[0] == 'sketch':
-                #     if style2[0] == 'black and white':
-                #         style_correct = style_correct+1
-                # elif style1[0] == 'fantasy vivid colors':
-                #     if style2[0] == 'Oil Paintings':
-                #         style_correct = style_correct+1
-                # elif style1[0] == 'Oil Paintings':
-                #     if style2[0] == 'fantasy vivid colors':
-                #         style_correct = style_correct+1
-                # elif style1[0] == 'vivid color':
-                #     if style2[0] == 'Oil Paintings':
-                #         style_correct = style_correct+1
-                # elif style1[0] == 'Oil Paintings':
-                #     if style2[0] == 'vivid color':
-                #         style_correct = style_correct+1
-                # elif style1[0] == 'Oil Paintings':
-                #     if style2[0] == 'oriental painting':
-                #         style_correct = style_correct+1        
-                # elif style1[0] == 'oriental painting':
-                #     if style2[0] == 'Oil Paintings':
-                #         style_correct = style_correct+1
+                #
+                #Realism, Painterly art
+                #Oriental ink, Gray-scale
+                #Pop art, Cartoon
+                #Sketch, Carricature
+                #Black and white, Gray-scale
+                
+                if style1[0] == 'Black and white':
+                    if style2[0] == 'Gray-scale':
+                        style_correct = style_correct+1
+                elif style1[0] == 'Gray-scale':
+                    if style2[0] == 'Black and white':
+                        style_correct = style_correct+1
+                elif style1[0] == 'Realism':
+                    if style2[0] == 'Painterly art':
+                        style_correct = style_correct+1
+                elif style1[0] == 'Painterly art':
+                    if style2[0] == 'Realism':
+                        style_correct = style_correct+1
+                elif style1[0] == 'Oriental ink':
+                    if style2[0] == 'Gray-scale':
+                        style_correct = style_correct+1
+                elif style1[0] == 'Gray-scale':
+                    if style2[0] == 'Oriental ink':
+                        style_correct = style_correct+1
+                elif style1[0] == 'Pop art':
+                    if style2[0] == 'Cartoon':
+                        style_correct = style_correct+1        
+                elif style1[0] == 'Cartoon':
+                    if style2[0] == 'Pop art':
+                        style_correct = style_correct+1
+                elif style1[0] == 'Sketch':
+                    if style2[0] == 'Carricature':
+                        style_correct = style_correct+1        
+                elif style1[0] == 'Carricature':
+                    if style2[0] == 'Sketch':
+                        style_correct = style_correct+1
 
-                # if style1[0] == style2[0]:
-                #     style_correct = style_correct+1     
+                if style1[0] == style2[0]:
+                    style_correct = style_correct+1     
                                     
 
                 scores = rouge.get_scores(docs1, docs2, avg=True)
                 rouge1_f = rouge1_f + scores['rouge-1']['f']
                 rouge2_f = rouge2_f + scores['rouge-2']['f']
                 rougel_f = rougel_f + scores['rouge-l']['f']
-    
-    #wandb.log({"style_Match": style_correct})
-    #wandb.log({"style_accuracy": style_correct/a})
-    wandb.log({"rouge1_f1score": rouge1_f/a})
-    wandb.log({"rouge2_f1score": rouge2_f/a})
-    wandb.log({"rougel_f1score": rougel_f/a})
-            
-    print("training is done")
+
+            print({"rouge1_f1score": rouge1_f/a})
+            print({"rouge2_f1score": rouge2_f/a})
+            print({"rougel_f1score": rougel_f/a})
+            print({"style_Match": style_correct})
+            print({"style_accuracy": style_correct/a})
+            wandb.log({"style_Match": style_correct})
+            wandb.log({"style_accuracy": style_correct/a})
+            wandb.log({"rouge1_f1score": rouge1_f/a})
+            wandb.log({"rouge2_f1score": rouge2_f/a})
+            wandb.log({"rougel_f1score": rougel_f/a})
+                    
+            print("training is done")
 
     
 if __name__ == "__main__":
