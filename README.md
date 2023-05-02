@@ -30,5 +30,7 @@ Realism, Sketch, Oriental ink, Pop art, Cartoon, Painterly art, Black and white,
                     기준으로 설정
 # Inference 분리
 
-ACD에 Inference 분리해서 학습시간 따로 
+ACD에 Inference 분리해서 학습시간 따로 측정 
+
+Style Match 맞는지 수식도 확인
 
