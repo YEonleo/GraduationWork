@@ -13,3 +13,18 @@ https://huggingface.co/eenzeenee/t5-small-korean-summarization model 변경후 �
 # 현재 화풍 종류
 
 Realism, Sketch, Oriental ink, Pop art, Cartoon, Painterly art, Black and white, Carricature, Gray-scale
+
+# 모델 학습 방식
+
+https://huggingface.co/eenzeenee/t5-small-korean-summarization 기반으로 학습
+
+Realism, Sketch, Oriental ink, Pop art, Cartoon, Painterly art, Black and white, Carricature, Gray-scale중
+
+                    
+                    Realism, Painterly art<br>
+                    Oriental ink, Gray-scale<br>
+                    Pop art, Cartoon<br>
+                    Sketch, Carricature<br>
+                    Black and white, Gray-scale<br>
+                    
+                    기준으로 설정
