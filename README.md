@@ -20,7 +20,7 @@ NLP Model: https://drive.google.com/file/d/1h5B8mCdGEMNgrbl6RJzje_LrXSdBo1XK/vie
 
 # Streamlits
 
-`dasd`
+`cd StoryPot`
 
 # Reference
 
