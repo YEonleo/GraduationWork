@@ -10,27 +10,29 @@ Reindex -> df index 순서 Passage, Summary, Style 순으로 통일. <br>
 
 https://huggingface.co/eenzeenee/t5-small-korean-summarization model 변경후 학습예정 -> 0416
 
-# 현재 화풍 종류
+# 권장 사양
+GPU DRAM 12G이상
 
-Realism, Sketch, Oriental ink, Pop art, Cartoon, Painterly art, Black and white, Carricature, Gray-scale
+# Model Ckpt
+Stable Diffusion : https://huggingface.co/stabilityai/stable-diffusion-2-1-base/resolve/main/v2-1_512-ema-pruned.ckpt <br>
+NLP Model: https://drive.google.com/file/d/1h5B8mCdGEMNgrbl6RJzje_LrXSdBo1XK/view?usp=share_link <br>
+을 다운받고 폴더의 상위폴더에 저장
 
-# 모델 학습 방식
+# Streamlits
 
-https://huggingface.co/eenzeenee/t5-small-korean-summarization 기반으로 학습
+`
 
-Realism, Sketch, Oriental ink, Pop art, Cartoon, Painterly art, Black and white, Carricature, Gray-scale중
+# Reference
 
-                    
-                    Realism, Painterly art
-                    Oriental ink, Gray-scale
-                    Pop art, Cartoon
-                    Sketch, Carricature
-                    Black and white, Gray-scale
-                    
-                    기준으로 설정
-# Inference 분리
+https://github.com/Stability-AI/stablediffusion
 
-ACD에 Inference 분리해서 학습시간 따로 측정 
+@InProceedings{Rombach_2022_CVPR,<br>
+&nbsp;&nbsp;    author    = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj\"orn},<br>
+&nbsp;&nbsp;    title     = {High-Resolution Image Synthesis With Latent Diffusion Models},<br>
+&nbsp;&nbsp;    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},<br>
+&nbsp;&nbsp;    month     = {June},<br>
+&nbsp;&nbsp;    year      = {2022},<br>
+&nbsp;&nbsp;    pages     = {10684-10695}<br>
+}<br>
 
-Style Match 맞는지 수식도 확인
 
