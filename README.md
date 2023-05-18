@@ -20,7 +20,8 @@ NLP Model: https://drive.google.com/file/d/1h5B8mCdGEMNgrbl6RJzje_LrXSdBo1XK/vie
 
 # Streamlits
 
-```cd StoryPot ```
+```cd ./StoryPot```
+```streamlit run ACD.py```
 
 # Reference
 
