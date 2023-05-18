@@ -7,9 +7,6 @@ AllCsv -> 폴더내 전체 csv 파일 한개로 병합. <br>
 Dest -> 폴더내 특정 갯수만큼 파일 추출. <br>
 Reindex -> df index 순서 Passage, Summary, Style 순으로 통일. <br>
 
-
-https://huggingface.co/eenzeenee/t5-small-korean-summarization model 변경후 학습예정 -> 0416
-
 # 권장 사양
 GPU DRAM 12G이상
 
