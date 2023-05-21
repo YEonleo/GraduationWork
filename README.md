@@ -12,6 +12,11 @@ Stable Diffusion : https://huggingface.co/stabilityai/stable-diffusion-2-1-base/
 NLP Model: https://drive.google.com/file/d/1h5B8mCdGEMNgrbl6RJzje_LrXSdBo1XK/view?usp=share_link <br>
 을 다운받고 폴더의 상위폴더에 저장
 
+# Streamlits
+
+```cd ./StoryPot```<br>
+```streamlit run ACD.py```
+
 # 졸업작품 관련 코드
 
 
@@ -19,11 +24,6 @@ JsontToCsv -> 폴더내 전체 json파일 읽어서 dataframe에 저장후 csv�
 AllCsv -> 폴더내 전체 csv 파일 한개로 병합. <br>
 Dest -> 폴더내 특정 갯수만큼 파일 추출. <br>
 Reindex -> df index 순서 Passage, Summary, Style 순으로 통일. <br>
-
-# Streamlits
-
-```cd ./StoryPot```<br>
-```streamlit run ACD.py```
 
 # Reference
 
