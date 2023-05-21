@@ -4,8 +4,9 @@ You can check the relevant information on the wiki page
 
 https://github.com/YEonleo/GraduationWork/wiki
 
-# 권장 사양
-GPU DRAM 12G이상
+# Recommended Specifications
+<br>
+GPU DRAM 12G
 
 # Model Ckpt
 Stable Diffusion : https://huggingface.co/stabilityai/stable-diffusion-2-1-base/resolve/main/v2-1_512-ema-pruned.ckpt <br>
@@ -17,7 +18,7 @@ NLP Model: https://drive.google.com/file/d/1h5B8mCdGEMNgrbl6RJzje_LrXSdBo1XK/vie
 ```cd ./StoryPot```<br>
 ```streamlit run ACD.py```
 
-# 졸업작품 관련 코드
+# Related Code
 
 
 JsontToCsv -> 폴더내 전체 json파일 읽어서 dataframe에 저장후 csv파일로 저장. <br>
