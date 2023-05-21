@@ -5,13 +5,10 @@ You can check the relevant information on the wiki page
 https://github.com/YEonleo/GraduationWork/wiki
 
 # Recommended Specifications
-<br>
 GPU DRAM 12G
 <br>
 
 # Model Ckpt
-<br>
-
 Stable Diffusion : https://huggingface.co/stabilityai/stable-diffusion-2-1-base/resolve/main/v2-1_512-ema-pruned.ckpt <br>
 NLP Model: https://drive.google.com/file/d/1h5B8mCdGEMNgrbl6RJzje_LrXSdBo1XK/view?usp=share_link <br>
 을 다운받고 폴더의 상위폴더에 저장
@@ -19,7 +16,6 @@ NLP Model: https://drive.google.com/file/d/1h5B8mCdGEMNgrbl6RJzje_LrXSdBo1XK/vie
 <br>
 
 # Streamlits
-<br>
 ```cd ./StoryPot```<br>
 ```streamlit run ACD.py```
 <br>
