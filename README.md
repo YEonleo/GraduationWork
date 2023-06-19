@@ -19,13 +19,6 @@ NLP Model: https://drive.google.com/file/d/1FcFejra_iFol_9Z6j3EDi5tt0z6Uc17I/vie
 ```cd ./StoryPot```<br>
 ```streamlit run ACD.py```
 <br>
-# Related Code
-
-
-JsontToCsv -> 폴더내 전체 json파일 읽어서 dataframe에 저장후 csv파일로 저장. <br>
-AllCsv -> 폴더내 전체 csv 파일 한개로 병합. <br>
-Dest -> 폴더내 특정 갯수만큼 파일 추출. <br>
-Reindex -> df index 순서 Passage, Summary, Style 순으로 통일. <br>
 
 # Reference
 
