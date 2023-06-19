@@ -10,7 +10,7 @@ GPU DRAM 12G
 
 # Model Ckpt
 Stable Diffusion : https://huggingface.co/stabilityai/stable-diffusion-2-1-base/resolve/main/v2-1_512-ema-pruned.ckpt <br>
-NLP Model: https://drive.google.com/file/d/1h5B8mCdGEMNgrbl6RJzje_LrXSdBo1XK/view?usp=share_link <br>
+NLP Model: https://drive.google.com/file/d/1FcFejra_iFol_9Z6j3EDi5tt0z6Uc17I/view?usp=share_link<br>
 을 다운받고 폴더의 상위폴더에 저장
 
 <br>
